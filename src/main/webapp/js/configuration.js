@@ -2,7 +2,7 @@ import requests from "./requests.js";
 import validators from "./validators.js";
 
 
-requests.initialRequest();
+//requests.initialRequest();
 
 
 $("#clear").on("click", function () {

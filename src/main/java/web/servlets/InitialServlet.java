@@ -18,10 +18,12 @@ public class InitialServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        /*
         ResultsTable resultsTable = (ResultsTable) request.getSession().getAttribute("results");
         if (resultsTable == null)
             return;
         response.getWriter().write(tableBody(resultsTable));
+         */
     }
 
     private String tableBody(ResultsTable resultsTable) {

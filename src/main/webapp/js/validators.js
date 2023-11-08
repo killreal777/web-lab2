@@ -1,6 +1,3 @@
-
-
-
 const validators = {
     isFormInputValid : function() {
         return validators.isRInputValid() && validators.isXInputValid() && validators.isYInputValid();
@@ -69,7 +66,6 @@ export default validators;
 function roundTwoSigns(number) {
     return Math.round(number * 100) / 100
 }
-
 
 const errMsg = $("#err-msg");
 
