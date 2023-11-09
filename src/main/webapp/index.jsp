@@ -1,43 +1,6 @@
-<%@ page import="area.model.ResultsTable" %>
-<%@ page import="area.model.TableRecord" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Collections" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%!
-    private String tableBody(ResultsTable resultsTable) {
-        List<TableRecord> resultsList = resultsTable.getTable();
-        Collections.reverse(resultsList);
-        String tableBody = "";
-        for (TableRecord record : resultsList) {
-            tableBody += tableLine(record);
-        }
-        Collections.reverse(resultsList);
-        return tableBody;
-    }
-
-    private String tableLine(TableRecord record) {
-        String tableLine = "";
-        tableLine += wrap("td", record.getStartTime());
-        tableLine += wrap("td", record.getExecutionTimeNano());
-        tableLine += wrap("td", record.getX());
-        tableLine += wrap("td", record.getX());
-        tableLine += wrap("td", record.getY());
-        tableLine += wrap("td", record.getResult());
-        return wrap("tr", tableLine);
-    }
-
-    private String wrap(String tag, String content) {
-        return "<" + tag + ">" + content + "</" + tag + ">";
-    }
-%>
-
-<%
-    ResultsTable resultsTable = (ResultsTable) session.getAttribute("results");
-    String tableBody = "";
-    if (resultsTable != null)
-        tableBody = tableBody(resultsTable);
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -80,11 +43,38 @@
             <table id="results-table">
                 <thead>
                     <tr>
-                        <td>Время</td><td>Затраты, ns</td><td>R</td><td>X</td><td>Y</td><td>Результат</td>
+                        <td>Время</td>
+                        <td>Затраты, ns</td>
+                        <td>R</td>
+                        <td>X</td>
+                        <td>Y</td>
+                        <td>Результат</td>
                     </tr>
                 </thead>
                 <tbody id="results-table-body">
-                    <%= tableBody %>
+                    <jsp:useBean id="results" class="area.model.ResultsTable" scope="session" />
+                    <c:forEach var="record" items="${results.records}">
+                        <tr>
+                            <td>
+                                <c:out value="${record.startTime}" />
+                            </td>
+                            <td>
+                                <c:out value="${record.executionTimeNano}" />
+                            </td>
+                            <td>
+                                <c:out value="${record.r}" />
+                            </td>
+                            <td>
+                                <c:out value="${record.x}" />
+                            </td>
+                            <td>
+                                <c:out value="${record.y}" />
+                            </td>
+                            <td>
+                                <c:out value="${record.result}" />
+                            </td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </td>

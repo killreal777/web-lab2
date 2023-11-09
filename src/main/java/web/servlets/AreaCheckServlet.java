@@ -41,7 +41,7 @@ public class AreaCheckServlet extends HttpServlet {
 
         if (results == null)
             results = new ResultsTable();
-        results.getTable().add(record);
+        results.getRecords().add(0, record);
         session.setAttribute("results", results);
     }
 

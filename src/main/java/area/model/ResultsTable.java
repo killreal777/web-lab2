@@ -1,21 +1,22 @@
 package area.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class ResultsTable implements Serializable {
-    private ArrayList<TableRecord> table;
+    private List<TableRecord> records;
 
     public ResultsTable() {
-        this.table = new ArrayList<>();
+        this.records = new LinkedList<>();
     }
 
-    public ArrayList<TableRecord> getTable() {
-        return table;
+    public List<TableRecord> getRecords() {
+        return records;
     }
 
-    public void setTable(ArrayList<TableRecord> table) {
-        this.table = table;
+    public void setRecords(List<TableRecord> records) {
+        this.records = records;
     }
 }

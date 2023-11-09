@@ -2,17 +2,6 @@ import table from "./table.js";
 import area from "./area.js";
 
 const requests = {
-    initialRequest : function () {
-        $.ajax({
-            type: "GET",
-            url: "./controller-servlet",
-            data: {"request-type" : "initial-request"},
-            success: function(data) {
-                $("#results-table-body").prepend(data);
-            }
-        });
-    },
-
     clearRequest : function () {
         $.ajax({
             type: "GET",
